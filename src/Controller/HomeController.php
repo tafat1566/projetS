@@ -3,10 +3,11 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response; 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController
+class HomeController extends AbstractController
 {
 	/**
 
@@ -16,17 +17,20 @@ class HomeController
 
 	public function home()
 	{
-		$content="Salut";
-		$number =51;
-		return new Response ("$content,a=$number");
+        $tabs=[1,2,3,4,5];
+        $bool = true;
+        return $this->render('index.html.twig',["var"=>"https://translate.google.com/",'tabs'=>$tabs,'bool'=>$bool] );
 
-	}
-    /**
-     * @Route("/",name="name")
-     */
-    public function param($name)
-    {
-        $phrase ="Bonjour monsieur";
-        return new Response("$phrase");
     }
+
+    /**
+
+     * @Route("/params/{name}",name="name",defaults={"name":"Patrick"},methods={"GET"})
+
+     */
+    /*public function params($name)
+    {
+        $phrase ="Bonjour madame";
+        return new Response("$phrase:$name");
+    }*/
 }
