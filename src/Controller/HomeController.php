@@ -25,12 +25,12 @@ class HomeController extends AbstractController
 
     /**
 
-     * @Route("/params/{name}",name="name",defaults={"name":"Patrick"},methods={"GET"})
+     * @Route("/params/{name}",name="name",defaults={"name":"TAFAT Aghiles"},methods={"GET"})
 
      */
-    /*public function params($name)
+    public function params($name)
     {
-        $phrase ="Bonjour madame";
-        return new Response("$phrase:$name");
-    }*/
+        $phrase ="Bonjour Monsieur";
+        return new Response("$name");
+    }
 }
