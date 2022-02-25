@@ -5,15 +5,15 @@
 
 
 {%block body%}
-<h1>Salut tout le monde</h1>
-    <h2>
-        {{var}}
-    </h2>
-    <ul>
-        {% if bool%}
-            {% for items in tabs %}
-              <li>{{items}}</li>
-            {% endfor %}
-        {% endif%}
-    </ul>
+
+
+    <main role="main" class="container">
+        <div>
+            {% if article.published==1%}
+                {{ article.title }}
+                <br>
+                {{article.image}}
+            {%endif%}
+        </div>
+    </main>
 {%endblock%}
