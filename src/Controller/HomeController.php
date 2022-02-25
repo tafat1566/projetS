@@ -2,10 +2,12 @@
 
 
 namespace App\Controller;
-
+use App\Entity\Article;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class HomeController extends AbstractController
 {
@@ -17,10 +19,14 @@ class HomeController extends AbstractController
 
 	public function home()
 	{
-        $tabs=[1,2,3,4,5];
-        $bool = true;
-        return $this->render('index.html.twig',["var"=>"https://translate.google.com/",'tabs'=>$tabs,'bool'=>$bool] );
-
+        $em=$this->getDoctrine()->getManager();
+        $article=new Article();
+        $article->setPublished(1);
+        $article->setImage('Une image');
+        $article->setTitle('Mon premier article');
+        $em->persist($article);
+        $em->flush();
+        return $this->render('index.html.twig',["article"=>$article]);
     }
 
     /**
