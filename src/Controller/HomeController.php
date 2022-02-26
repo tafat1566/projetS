@@ -19,14 +19,8 @@ class HomeController extends AbstractController
 
 	public function home()
 	{
-        $em=$this->getDoctrine()->getManager();
-        $article=new Article();
-        $article->setPublished(1);
-        $article->setImage('Une image');
-        $article->setTitle('Mon premier article');
-        $em->persist($article);
-        $em->flush();
-        return $this->render('index.html.twig',["article"=>$article]);
+
+        return $this->render('index.html.twig');
     }
 
     /**
