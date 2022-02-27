@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Form\Extension\Core\Type\DateTime;
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
@@ -31,6 +31,16 @@ class Article
      * @ORM\Column(type="string", length=255)
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private $createdAt;
+
+    public function __construct()
+    {
+        $this->createdAt=new \DatetimeImmutable();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +79,18 @@ class Article
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }

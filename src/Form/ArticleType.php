@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Article;
 
+use Doctrine\DBAL\Types\DateType;
 use phpDocumentor\Reflection\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
