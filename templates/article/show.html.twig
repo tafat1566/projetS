@@ -1,0 +1,26 @@
+{% extends 'base.html.twig'%}
+
+{%block title%}
+
+{{article.title}}
+
+{%endblock%}
+
+{%block body%}
+
+ <div class="container">
+     <h2>
+
+     </h2>
+     <h1>
+         {{ article.title}}
+     </h1>
+    <figure>
+        <img src="article.image" alt="phpoto">
+    </figure>
+     <small class="text-muted"><i>Date de publication: </i>{{ article.createdAt|date("d/m/Y") }}</small>
+
+
+ </div>
+
+{%endblock%}

@@ -15,6 +15,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 Class ArticleController extends AbstractController
 {
+
+    /**
+     * @Route ("/{id}/show", name="article_show")
+     * @param Article $article
+     * @return Response
+     */
+    public function show(Article $article):Response
+    {
+        return $this->render("article/show.html.twig",["article"=>$article]);
+    }
     /**
      * @Route("/article/new", name="article_new")
      * @param Request $request
