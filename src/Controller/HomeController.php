@@ -17,24 +17,15 @@ class HomeController extends AbstractController
     /**
 
 	 * @Route("/",name="home")
-     * @param ArticleRepository $articleRepository
+     * @return Response
 
 	 */
 
-	public function home(ArticleRepository $articleRepository)
+	public function home()
 	{
 
-        return $this->render('index.html.twig',["articles"=>$articleRepository->findBy(["published"=>1])]);
+        return $this->render('index.html.twig');
     }
 
-    /**
 
-     * @Route("/params/{name}",name="name",defaults={"name":"TAFAT Aghiles"},methods={"GET"})
-
-     */
-    public function params($name)
-    {
-        $phrase ="Bonjour Monsieur";
-        return new Response("$name");
-    }
 }
