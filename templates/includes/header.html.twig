@@ -13,7 +13,7 @@
 
         <div class="s-header__logo">
             <a class="logo" href="index.html">
-                <img src="images/logo.svg" alt="Homepage">
+                <img src="{{asset('assets/images/logo.svg')}}" alt="Homepage">
             </a>
         </div>
 
@@ -22,7 +22,7 @@
             <h2 class="s-header__nav-heading h6">Site Navigation</h2>
 
             <ul class="s-header__nav">
-                <li class="current"><a href="index.html" title="">Home</a></li>
+                <li class="current"><a href="{{path('home')}}" title="">Acueil</a></li>
                 <li class="has-children">
                     <a href="#0" title="">Categories</a>
                     <ul class="sub-menu">
@@ -47,7 +47,9 @@
                 </li>
                 <li><a href="styles.html" title="">Styles</a></li>
                 <li><a href="about.html" title="">About</a></li>
-                <li><a href="contact.html" title="">Contact</a></li>
+
+                <li><a href="{{path('register')}}" title="">Inscription</a></li>
+                <li><a href="{{path('app_login')}}" title="">Connexion</a></li>
             </ul> <!-- end header__nav -->
 
             <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>
