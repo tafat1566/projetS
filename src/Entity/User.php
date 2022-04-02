@@ -6,6 +6,8 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,11 +22,14 @@ class User
     private $id;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
     private $username;
 
     /**
+     * @Assert\Email()
+     * @Assert\NotBlank();
      * @ORM\Column(type="string", length=255)
      */
     private $email;
@@ -35,6 +40,7 @@ class User
     private $password;
 
     /**
+     * @Assert\NotBlank()
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -61,6 +67,9 @@ class User
 
     public function __construct()
     {
+        $this->roles=['ROLES_USER'];
+        $this->createdAt=new \DateTime();
+        $this->enabled=false;
         $this->articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
     }
